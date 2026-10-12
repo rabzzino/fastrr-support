@@ -6,6 +6,7 @@ permalink: /terms/
 # Terms of Use for Fastrr
 
 **Effective date:** 2026-06-06
+**Last updated:** 2026-10-12
 
 These Terms of Use ("Terms") govern your use of the Fastrr mobile application ("app", "service") developed by Rabbi Ahmed ("we", "us", "developer"). By downloading, installing, or using Fastrr, you agree to these Terms. If you do not agree, do not use the app.
 
@@ -38,7 +39,7 @@ If you create an account, you are responsible for:
 - All activity that happens under your account
 - Providing accurate information when signing up
 
-You may delete your account at any time via the "Delete Account" option in the Profile screen. Deletion is permanent — see our Privacy Policy for details.
+You may delete your account at any time in the app via Profile → Settings (gear icon) → Account → Delete Account. Deletion is permanent — see our Privacy Policy for details.
 
 ## 4. Subscription and payments
 
@@ -70,7 +71,7 @@ You retain ownership of the data you enter (fasting logs, weight logs, notes). B
 
 ## 7. Third-party services
 
-Fastrr integrates with third-party services (Apple HealthKit, Supabase, RevenueCat, PostHog, Sentry). Your use of those services is governed by their respective terms of service. We are not responsible for the practices of these third parties.
+Fastrr integrates with third-party services (Apple HealthKit, Supabase, Resend, RevenueCat, PostHog, Sentry). Your use of those services is governed by their respective terms of service. We are not responsible for the practices of these third parties.
 
 ## 8. Availability
 

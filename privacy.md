@@ -6,6 +6,7 @@ permalink: /privacy/
 # Privacy Policy for Fastrr
 
 **Effective date:** 2026-06-06
+**Last updated:** 2026-10-12
 
 Fastrr ("we", "us", "the app") is an intermittent fasting tracker developed by Rabbi Ahmed ("developer"). This policy explains what data we collect, why, and how it is handled. If you do not agree with this policy, please do not use the app.
 
@@ -15,37 +16,43 @@ Contact: rabbiahmed958@gmail.com
 
 ### 1.1 Account information (only if you sign in)
 - Email address
-- Optional display name
+- Optional display name (the name you enter, or the name Apple shares the first time you sign in with Apple). It is synced with your account.
 - Apple ID identifier (only if you sign in with Apple)
 
 We use Supabase to authenticate you and store your synced data. Your password (if applicable) is hashed by Supabase and never stored in plain text.
 
+We use Resend to email you the 6-digit codes that confirm your email address, reset your password or change your email. Resend receives only your email address and the email it delivers (the code). It receives none of your fasting or health data.
+
 ### 1.2 Fasting and health data you enter
 - Start and end times of your fasting sessions
-- Body weight logs, hydration logs, meal notes
+- Body weight logs (typed, or imported from Apple Health: see 1.3), hydration logs, the times you log a meal
 - Fasting protocol (16:8, 18:6, etc.)
-- Personal profile data you provide during onboarding (height, age, activity level, goals)
+- Personal profile data you provide during onboarding (height, weight, age, gender, activity level, goals, and a goal weight and date if you set one)
+- A gentle-mode setting: yes or no. It is on if you told us during onboarding that you are pregnant or breastfeeding, have had an eating disorder, take insulin or other diabetes medication, or have another medical condition or take regular medication, or if you are under 18. It makes the app suggest gentler fasts and not set a weight goal. We keep only the yes or no, never which reason you chose.
 
 This data is stored locally on your device (SQLite) and optionally synced to Supabase if you sign in, so it can appear on other devices you sign in on.
 
+The note and the "How was it?" answer you can add to a fast stay on your device. They are not synced to your account.
+
 ### 1.3 Apple Health (HealthKit) data
 If you grant permission, the app reads the following from Apple Health:
-- Steps
-- Active energy burned
+- Steps and walking or running distance
+- Active energy burned and exercise minutes
 - Heart rate (including resting heart rate)
-- Body weight
 - Sleep analysis
 - Workouts
+- Water intake
+- Weight (body mass)
 
-**HealthKit data is used only on-device to power your fasting insights.** It is never sent to our servers, analytics providers, or any third party. It is not linked to your account, marketed against, or sold. This complies with Apple's HealthKit privacy requirements.
+**Activity, heart rate, sleep, workout and water readings from HealthKit are used only on-device to power your fasting insights.** They are never sent to our servers, analytics providers, or any third party, are not linked to your account, and are not marketed against or sold.
 
-The app may write the following to Apple Health if you allow:
-- Water intake logs
-- Fasting sessions as mindful minutes
+**Weight is the exception.** Weigh-ins you bring in from Apple Health become weigh-ins in Fastrr: they are stored on your device and, like the weights you type, synced to your Fastrr account if you sign in, so your weight trend appears on every device you sign in on. A weigh-in you typed always wins over one from Health for the same day. They are never sent to analytics providers or any third party, are not used for advertising, and are not sold. This complies with Apple's HealthKit privacy requirements.
+
+If you allow it, the app writes the water intake you log in Fastrr to Apple Health, and a weigh-in when you switch on "Save to Apple Health" for it. It does not write any other data to Apple Health.
 
 ### 1.4 Subscription data
 If you subscribe, RevenueCat processes your subscription on our behalf. RevenueCat receives:
-- An anonymous app-user identifier
+- An app-user identifier: an anonymous one while you use Fastrr without an account, or, once you sign in, your Fastrr account's user ID (a random identifier, not your name or email) so your subscription follows your account to your other devices
 - Subscription status (active, expired, trial, cancelled)
 - Which product you purchased
 
@@ -60,12 +67,14 @@ We use PostHog to understand feature usage in aggregate. PostHog receives:
 We do not send PostHog any HealthKit data values, weight logs, personal profile data, or account information.
 
 ### 1.6 Crash and error reports (Sentry)
-We use Sentry to detect and fix crashes. Sentry receives:
+We use Sentry to detect and fix crashes and errors. Sentry receives:
 - Stack traces from crashes and unhandled errors
+- Reports of errors the app handled (for example, a sign-in or sync request that failed), with an error code and the name of the feature or data type involved
 - Anonymous device info (OS version, model)
-- Basic context (which screen was open when the crash happened)
+- Basic context (which screen was open, and the app's recent steps before the error)
+- Performance timings (such as how long the app took to start) for a sample of app sessions
 
-We do not send Sentry any HealthKit values, personal health data, weight logs, or your personal profile.
+Before a report leaves your device, the app removes email addresses, sign-in tokens and keys from it. Reports are not linked to your account: no user ID or email is attached. We do not send Sentry any HealthKit values, personal health data, weight logs, or your personal profile.
 
 ## 2. What we do NOT do
 
@@ -77,11 +86,15 @@ We do not send Sentry any HealthKit values, personal health data, weight logs, o
 
 ## 3. Data location and retention
 
-Local data: stored on your device until you delete it (via "Delete Account" in the app) or uninstall.
+Local data: stored on your device until you delete it (via "Delete Account" in the app), sign out (signing out removes Fastrr's data from that device), or uninstall.
 
-Synced data (Supabase): stored in Supabase's infrastructure (US region). Retained as long as your account exists. Deleted permanently within 30 days of you invoking "Delete Account".
+Synced data (Supabase): stored in Supabase's London region (eu-west-2, United Kingdom). Retained as long as your account exists. When you delete your account, your account and every synced record are deleted at once. Supabase's daily backups may hold a copy for up to 7 days after that, until they expire.
 
-RevenueCat data: retained per RevenueCat's policy while you have an active subscription; anonymized on account deletion.
+Sign-in security log (Supabase): Supabase's sign-in service keeps a log of account events, such as sign-ins and the deletion of an account. Each entry can include your email address and the IP address used. These entries are kept for security purposes for 90 days, including after your account is deleted, and then deleted.
+
+Email delivery (Resend): Resend keeps a record of the emails it delivered (your address, the time and whether it arrived) per Resend's retention policy.
+
+RevenueCat data: retained per RevenueCat's policy while you have an active subscription. When you delete your account, we delete your RevenueCat customer record. Apple keeps its own record of your purchases.
 
 PostHog analytics: aggregate event data retained per PostHog's retention policy.
 
@@ -90,10 +103,15 @@ Sentry crash data: retained per Sentry's default retention policy (typically 90 
 ## 4. Your rights (GDPR, CCPA, and others)
 
 You have the right to:
-- **Access:** email us to request a copy of your data.
-- **Delete:** use "Delete Account" in the app's Profile screen. This permanently deletes your Supabase account, all synced data, and all local data. Deletion happens immediately in the app and is reflected across our systems within 30 days.
-- **Export:** the app includes a Data Export feature (PDF and CSV) covering your fasting history.
-- **Opt out of analytics:** disable PostHog by turning off "Share usage data" in Settings (if enabled).
+- **Access:** Settings → Data → Export my data makes a CSV file of the fasts, weigh-ins and water on your phone, at any time and with or without an account. For everything your account holds, email us from your account's email address and we send you a file.
+- **Delete:** in the app, go to Profile → Settings (gear icon) → Account details → Delete Account, and confirm with your password, or with Apple if you use Sign in with Apple. This immediately and permanently deletes:
+  - your Fastrr account and every synced record;
+  - your RevenueCat customer record;
+  - Fastrr's access through Sign in with Apple, when you confirm with Apple. If Apple can't complete this, the app shows you how to stop using Sign in with Apple for Fastrr in your Apple ID settings;
+  - all Fastrr data on that device.
+
+  Backups and the sign-in security log follow the periods in section 3. Deleting your account does not cancel a subscription: cancel it in your Apple ID settings (Settings → your name → Subscriptions). If you can't use the app (for example, you lost your phone), email us from your account's email address and we will delete the account for you; in that case, stop using Sign in with Apple for Fastrr yourself in your Apple ID settings, as we can't do it without your device.
+- **Analytics:** PostHog events are anonymous and never linked to your account or email. Contact us if you have questions about analytics data.
 - **Contact us:** rabbiahmed958@gmail.com for any privacy questions.
 
 ## 5. Children
@@ -111,6 +129,7 @@ If we change this policy in a material way, we will notify you in the app and up
 ## 8. Third parties referenced
 
 - **Supabase** (authentication + sync): https://supabase.com/privacy
+- **Resend** (sign-in code emails): https://resend.com/legal/privacy-policy
 - **RevenueCat** (subscriptions): https://www.revenuecat.com/privacy
 - **PostHog** (analytics): https://posthog.com/privacy
 - **Sentry** (crash reporting): https://sentry.io/privacy
