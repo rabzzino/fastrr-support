@@ -6,7 +6,7 @@ permalink: /privacy/
 # Privacy Policy for Fastrr
 
 **Effective date:** 2026-06-06
-**Last updated:** 2026-10-12
+**Last updated:** 2026-10-29
 
 Fastrr ("we", "us", "the app") is an intermittent fasting tracker developed by Rabbi Ahmed ("developer"). This policy explains what data we collect, why, and how it is handled. If you do not agree with this policy, please do not use the app.
 
@@ -26,8 +26,9 @@ We use Resend to email you the 6-digit codes that confirm your email address, re
 ### 1.2 Fasting and health data you enter
 - Start and end times of your fasting sessions
 - Body weight logs (typed, or imported from Apple Health: see 1.3), hydration logs, the times you log a meal
+- The badges you earn
 - Fasting protocol (16:8, 18:6, etc.)
-- Personal profile data you provide during onboarding (height, weight, age, gender, activity level, goals, and a goal weight and date if you set one)
+- Personal profile data you provide during onboarding (height, weight, age, gender, activity level, goals, and a goal weight and date if you set one), and your other onboarding answers, such as when you wake and go to sleep, your first meal, your fasting experience and what gets in your way
 - A gentle-mode setting: yes or no. It is on if you told us during onboarding that you are pregnant or breastfeeding, have had an eating disorder, take insulin or other diabetes medication, or have another medical condition or take regular medication, or if you are under 18. It makes the app suggest gentler fasts and not set a weight goal. We keep only the yes or no, never which reason you chose.
 
 This data is stored locally on your device (SQLite) and optionally synced to Supabase if you sign in, so it can appear on other devices you sign in on.
@@ -55,16 +56,23 @@ If you subscribe, RevenueCat processes your subscription on our behalf. RevenueC
 - An app-user identifier: an anonymous one while you use Fastrr without an account, or, once you sign in, your Fastrr account's user ID (a random identifier, not your name or email) so your subscription follows your account to your other devices
 - Subscription status (active, expired, trial, cancelled)
 - Which product you purchased
+- A device identifier Apple gives each app developer (the identifier for vendor, not the advertising identifier), which RevenueCat's software sends with each request
+- If RevenueCat's own subscription screen is shown (it appears only if the app can't load its own), when it was viewed and closed
 
 We do not receive your Apple ID email or payment details — those stay between you and Apple.
 
 ### 1.5 Analytics data (PostHog)
-We use PostHog to understand feature usage in aggregate. PostHog receives:
-- Anonymous app-usage events (e.g., "fast started", "paywall viewed", "achievement unlocked")
-- General device info (OS version, device model)
-- Whether HealthKit data is available (boolean only — NOT the values)
+We use PostHog to understand, in aggregate, how the app is used. PostHog receives anonymous app-usage events (e.g., "fast started", "fast ended", "paywall viewed"), with details such as:
+- A fast's length, its goal and plan, and whether you added a note (never the note itself or your "How was it?" answer)
+- The amount of water you log, and your daily water goal
+- On the paywall, the plan you chose, its price and whether it began with a free trial
+- Which onboarding steps you saw, the plan you picked and how soon you planned your first fast (never your body measurements, age, health or safety answers)
+- General device and app info (OS version, device model, language, time zone, app version and the kind of build)
+- A random identifier for this installation, so one phone's events can be grouped. It is replaced when you sign out and is never linked to your account
+- The IP address each request comes from, as with any internet service
+- Whether HealthKit data is available (yes or no only, never the values)
 
-We do not send PostHog any HealthKit data values, weight logs, personal profile data, or account information.
+The app turns off PostHog's location lookup, so its events carry no location. We do not send PostHog any HealthKit readings, weight logs, your body measurements, age or health answers, your name or email, or your account's user ID.
 
 ### 1.6 Crash and error reports (Sentry)
 We use Sentry to detect and fix crashes and errors. Sentry receives:
@@ -74,7 +82,7 @@ We use Sentry to detect and fix crashes and errors. Sentry receives:
 - Basic context (which screen was open, and the app's recent steps before the error)
 - Performance timings (such as how long the app took to start) for a sample of app sessions
 
-Before a report leaves your device, the app removes email addresses, sign-in tokens and keys from it. Reports are not linked to your account: no user ID or email is attached. We do not send Sentry any HealthKit values, personal health data, weight logs, or your personal profile.
+Before a report leaves your device, the app removes email addresses, sign-in tokens, keys and account IDs from it. Reports are not linked to your account: they carry a random identifier for this installation and a device code made for this app, never your user ID or email. We do not send Sentry any HealthKit values, personal health data, weight logs, or your personal profile.
 
 ## 2. What we do NOT do
 
