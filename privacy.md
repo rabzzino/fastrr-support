@@ -57,7 +57,6 @@ If you subscribe, RevenueCat processes your subscription on our behalf. RevenueC
 - Subscription status (active, expired, trial, cancelled)
 - Which product you purchased
 - A device identifier Apple gives each app developer (the identifier for vendor, not the advertising identifier), which RevenueCat's software sends with each request
-- If RevenueCat's own subscription screen is shown (it appears only if the app can't load its own), when it was viewed and closed
 
 We do not receive your Apple ID email or payment details — those stay between you and Apple.
 
